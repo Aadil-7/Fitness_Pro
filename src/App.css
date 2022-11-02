@@ -1,38 +1,377 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
   min-height: 100vh;
+  background-color: #000000e6;
+  overflow-x: hidden;
+}
+
+nav {
+  height: auto;
+  width: 100vw;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 5px 40px;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  border-bottom: #f42323 2px dashed;
+  z-index: 2;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navBranding {
+  height: auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav h1 {
+  font-style: italic;
+  font-size: 2rem;
+  text-shadow: 0px 5px 2px #000;
+}
+
+nav .branding {
+  width: 80px;
+}
+
+.heroContent {
+  width: 90%;
+  height: auto;
+  margin: 100px auto;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 100px;
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.intro h1 {
+  font-size: 1.8rem;
+  text-shadow: 0 5px 10px #000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.brandColor {
+  color: #f42323;
+}
+
+.bannerimg {
+  width: 550px;
+  border-radius: 0 80px 0 80px;
+  box-shadow:
+    0 5px 20px #fff,
+    0 0 5px #fff;
+  border-right: 3px solid #f42323;
+  border-top: 3px solid #f42323;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.bannerimg:hover {
+  box-shadow:
+    0 5px 50px #fff,
+    0 0 5px #fff;
+  transform: scale(1.01);
+}
+
+.searchOptions {
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  margin: 60px auto;
+}
+
+.categoryContainer {
+  width: 90%;
+  margin: 60px auto;
+  display: grid;
+  gap: 55px;
+  grid-auto-flow: column;
+  place-items: center;
+  padding: 15px;
+  overflow-x: scroll;
+}
+
+.categoryCard {
+  width: 130px;
+  background-color: #f42323;
+  text-transform: capitalize;
+  border: 1px solid white;
+  text-align: center;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .5s;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-weight: bolder;
+}
+
+.categoryCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 10px #fff;
+}
+
+.searchContainer {
+  width: 90%;
+  margin: 60px auto;
+  padding: 20px 0;
+  background-color: #323030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.searchContainer .searchBar {
+  width: 35%;
+  font-style: italic;
+  letter-spacing: 2px;
+  height: 40px;
+  background-color: #4f4e4e;
+  border: 2px solid black;
+  text-indent: 5px;
+  color: #fff;
+}
+
+.searchBar:focus {
+  outline: none;
+}
+
+.searchContainer .searchBtn {
+  height: 40px;
+  padding: 5px 20px;
+  background-color: #f42323;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 5px black;
+  cursor: pointer;
+}
+
+.maindetails {
+  color: #fff;
+}
+
+.loader {
+  color: #fff;
+  font-size: 20px;
+  text-transform: capitalize;
+  letter-spacing: 1.5px;
+}
+
+.cardContainer {
+  height: auto;
+  width: 90%;
+  margin: 60px auto 10px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 70px;
+}
+
+.cardContainer a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  overflow: hidden;
+  background-color: #323030;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, .5);
+  border-radius: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.card h3,
+.card p {
+  margin: 20px;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+.card h3 {
+  color: #f42323;
+}
+
+.card:hover h3 {
+  color: #000;
+}
+
+.topBrdr {
+  position: absolute;
+  background-color: #f42323;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 0px;
+  transition: .5s;
+}
+
+.card:hover {
+  transform: scale(1.07);
+  background: #f42323;
+}
+
+.card:hover .topBrdr {
+  width: 300px;
+}
+
+.detailcontainer {
+  margin: 20px auto;
+  padding: 40px;
+  width: 95vw;
+  text-transform: capitalize;
+  background-color: #323030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.detailcontainer img {
+  border: 2px solid #f42323;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px black;
+}
+
+.excdetails p {
+  line-height: 40px;
+  font-size: 1.5rem;
+}
+
+.excdetails h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #f42323;
+}
+
+.maindetails h1 {
+  margin: 40px 20px;
+  letter-spacing: 1.5px;
+}
+
+.recomendation {
+  width: 95vw;
+  padding: 40px;
+  margin: 20px auto;
+  background-color: #323030;
+  overflow-x: scroll;
+  border: 1px solid #f42323;
+}
+
+.recomendation a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.recomendCards {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 30px;
+}
+
+.recomendCards .card,
+.recomendCards .card img {
+  width: 250px;
+}
+
+.recomendCards .card h3 {
+  font-size: 1rem;
+}
+
+.recomendCards .card p {
+  font-size: 12px;
+}
+
+footer {
+  width: 100vw;
+  margin-top: 80px;
+  padding: 20px 0;
+  background-color: #323030;
+  color: #fff;
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 1.5px;
+}
+
+footer a {
+  color: #f42323;
+  text-shadow: 0 2px 5px black;
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #323030;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 5px;
+  width: 5px;
+  background-color: #f42323;
+}
+
+@media (max-width:995px) {
+  .bannerimg {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width:835px) {
+  .detailcontainer {
+    flex-direction: column;
+  }
+
+  nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width:445px) {
+  .categoryContainer {
+    gap: 20px;
+  }
+
+  .searchContainer .searchBar {
+    width: 60%;
+  }
+
+  .detailcontainer img {
+    width: 80vw;
+  }
+
+  nav h1 {
+    font-size: 1.5rem;
+  }
+
+  footer {
+    font-size: 10px;
   }
 }
